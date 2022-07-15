@@ -1,20 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Home from './screens/Home';
+import Info from './screens/Info';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName ='Home'>
+        <Stack.Screen  
+          name='MegaPlex' 
+          component={Home} 
+          options={{
+            headerTintColor: 'white', //'#ffd500',
+            headerStyle: {
+              backgroundColor: 'black'
+            }
+          }}
+        />
+        <Stack.Screen  
+          name='Information' 
+          component={Info} 
+          options={{
+            headerTintColor: 'white',
+            headerStyle: {
+              backgroundColor: 'black'
+            }
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
