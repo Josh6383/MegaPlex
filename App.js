@@ -14,7 +14,8 @@ export default function App() {
           name='MegaPlex' 
           component={Home} 
           options={{
-            headerTintColor: 'white', //'#ffd500',
+            animationEnabled: false,
+            headerTintColor: '#ffd500',
             headerStyle: {
               backgroundColor: 'black'
             }
@@ -25,7 +26,8 @@ export default function App() {
           component={VideoWebView} 
           headerShown={false}
           options={{
-            headerTintColor: 'white', //'#ffd500',
+            animationEnabled: false,
+            headerTintColor: '#ffd500',
             headerStyle: {
               backgroundColor: 'black'
             }

@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
-import { StyleSheet, Animated, Text, ScrollView, View, TextInput, SafeAreaView, useWindowDimensions, TouchableOpacity, ImageBackground, FlatList } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ImageBackground, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'
-import CategoryBubble from '../components/CategoryBubble';
-import KeyboardAvoidingWrapper from '../components/KeyboardAvoidingWrapper'
-import MovieSlider from '../components/MoviesSlider';
 import Movies from '../movies.json';
 
 export default function Home({ navigation }){
@@ -36,6 +33,7 @@ export default function Home({ navigation }){
             <TouchableOpacity style={{alignItems: 'center'}} onPress={() => 
                 navigation.navigate('WebView', {
                     videoLink: item.PageLink,
+                    headerTitle: item.MovieTitle
                 })
             }>
                 <ImageBackground style={{
@@ -59,14 +57,14 @@ export default function Home({ navigation }){
                 style={{
                     height: 0.5,
                     width: '100%',
-                    backgroundColor: 'white',
+                    backgroundColor: '#ffd500',
                 }} 
             />
         );
      }
 
     return(
-            <SafeAreaView>
+            <View>
                 <View style={styles.pageContainer}>
                     <View style={styles.searchContainer}>
                         <View style={{
@@ -96,6 +94,7 @@ export default function Home({ navigation }){
                         bottom: 10,
                     }}>
                         <FlatList
+                            style={{flex: 1}}
                             numColumns={3}
                             keyExtractor={(item) => item.PageLink}
                             data={filteredDataSource}
@@ -104,7 +103,7 @@ export default function Home({ navigation }){
                         />
                     </View>
                 </View>
-            </SafeAreaView>
+            </View>
     );
 }
 
@@ -119,7 +118,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     pageContainer: {
-        backgroundColor: '#070a0d',
+        backgroundColor: '#101111',
         height: '100%',
         justifyContent: 'center',
     },
